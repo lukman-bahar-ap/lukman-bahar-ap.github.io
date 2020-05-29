@@ -20,17 +20,16 @@ workbox.routing.registerRoute(
   })
 );
 
-workbox.precaching.precacheAndRoute([]);
 workbox.precaching.precacheAndRoute([
   { url: '/index.html', revision: '1' },
   { url: '/team-info.html', revision: '1' },
   { url: '/push.js', revision: '1' },
   { url: '/app.js', revision: '1' },
+  { url: '/pages/home.html', revision: '1' },
   { url: '/manifest.json', revision: '1' },
-  { url: '/images/logo.png', revision: '1' },
-  { url: '/js/materialize.min.js', revision: '1' },
-  { url: '/js/view/main.js', revision: '1' },
-]);
+], {
+  ignoreUrlParametersMatching: [/.*/]
+});
 
 workbox.routing.registerRoute(
   new RegExp('/pages/'),
@@ -71,60 +70,14 @@ workbox.routing.registerRoute(
     ],
   })
 );
+
 workbox.routing.registerRoute(
-  new RegExp('/js/utility/'),
+  new RegExp('/assets/'),
   workbox.strategies.staleWhileRevalidate({
-    cacheName: 'utility'
+    cacheName: 'assets'
   })
 );
-workbox.routing.registerRoute(
-  new RegExp('/js/dom-content-loaded/'),
-  workbox.strategies.staleWhileRevalidate({
-    cacheName: 'dom-content-loaded'
-  })
-);
-workbox.routing.registerRoute(
-  new RegExp('/css/'),
-  workbox.strategies.cacheFirst({
-    cacheName: 'css'
-  })
-);
-workbox.routing.registerRoute(
-  new RegExp('/js/component/'),
-  workbox.strategies.staleWhileRevalidate({
-    cacheName: 'component'
-  })
-);
-workbox.routing.registerRoute(
-  new RegExp('/js/api/'),
-  workbox.strategies.staleWhileRevalidate({
-    cacheName: 'api'
-  })
-);
-workbox.routing.registerRoute(
-  new RegExp('/js/db/'),
-  workbox.strategies.staleWhileRevalidate({
-    cacheName: 'db'
-  })
-);
-workbox.routing.registerRoute(
-  new RegExp('/images/bg-img/'),
-  workbox.strategies.cacheFirst({
-    cacheName: 'bg-img'
-  })
-);
-workbox.routing.registerRoute(
-  new RegExp('/images/icon/'),
-  workbox.strategies.cacheFirst({
-    cacheName: 'icon'
-  })
-);
-workbox.routing.registerRoute(
-  new RegExp('/images/slide-collection/'),
-  workbox.strategies.cacheFirst({
-    cacheName: 'slide'
-  })
-);
+
 workbox.routing.registerRoute(
   /\.(?:png|gif|jpg|jpeg|svg)$/,
   workbox.strategies.cacheFirst({
@@ -145,7 +98,7 @@ self.addEventListener('push', event => {
   } else {
     body = 'Push message no payload';
   }
-  let options = {
+  const options = {
     body: body,
     icon: '/images/icon/icon-m.png',
     vibrate: [100, 50, 100],

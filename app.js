@@ -1,6 +1,6 @@
-import main from "./js/view/main.js";
-import NoAccessTemplate from "./js/component/no-access-html.js";
-import GlobalFunct from "./js/utility/global-funct.js";
+import main from "./assets/js/view/main.js";
+import NoAccessTemplate from "./assets/js/component/no-access-html.js";
+import GlobalFunct from "./assets/js/utility/global-funct.js";
 
 if(!(window.location.href.indexOf("team-info.html") > -1)){
 

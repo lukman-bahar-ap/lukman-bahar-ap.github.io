@@ -10,7 +10,7 @@ class TeamsTemplate {
             valueTeamHTML += `
               <div class="card colom-box hoverable">
                   <a href="./team-info.html?id=${team.id}" class="waves-effect waves-block waves-light">
-                    <img src="${GlobalFunct.imageHttpToHttps(team.crestUrl)}" alt="logo ${team.name}" onerror="this.onerror=null;this.src='images/icon/icon-m.png'"/>
+                    <img src="${GlobalFunct.imageHttpToHttps(team.crestUrl)}" alt="logo ${team.name}" onerror="this.onerror=null;this.src='assets/images/icon/icon-m.png'"/>
                   
                     <div class="card-info">
                       <h4>${team.name}</h4>
@@ -25,20 +25,33 @@ class TeamsTemplate {
     static showTeamsDb (data) {
 
         let valueTeamHTML = "";
-        data.forEach(team => {
+        if(data.length <= 0){
 
-            valueTeamHTML += `
-              <div class="card colom-box hoverable">
-                  <a href="./team-info.html?id=${team.id}&saved=true" class="waves-effect waves-block waves-light">
-                    <img src="${GlobalFunct.imageHttpToHttps(team.crestUrl)}" alt="logo ${team.name}" onerror="this.onerror=null;this.src='images/icon/icon-m.png'"/>
-                  
-                    <div class="card-info">
-                      <h4>${team.name}</h4>
-                      <p>${team.venue}</p>
-                    </div>
-                  </a>
-              </div>`;
-        })
+          valueTeamHTML += `
+            <div class="center">
+                  <img src="assets/images/icon/empty.png"/>
+                  <p><b>Saved Teams will show up here</b><p>
+                  <p>So you can easily view them after saved your favorite teams<p>
+            </div>`;
+
+        }else{
+
+            data.forEach(team => {
+
+                valueTeamHTML += `
+                  <div class="card colom-box hoverable">
+                      <a href="./team-info.html?id=${team.id}&saved=true" class="waves-effect waves-block waves-light">
+                        <img src="${GlobalFunct.imageHttpToHttps(team.crestUrl)}" alt="logo ${team.name}" onerror="this.onerror=null;this.src='assets/images/icon/icon-m.png'"/>
+                      
+                        <div class="card-info">
+                          <h4>${team.name}</h4>
+                          <p>${team.venue}</p>
+                        </div>
+                      </a>
+                  </div>`;
+            })
+
+        }
         return valueTeamHTML;
     }
 
@@ -83,7 +96,7 @@ class TeamsTemplate {
                 <div class="section no-pad-bot">
                   <div class="variant-box">
                       <div class="colom-header">
-                        <img src="${GlobalFunct.imageHttpToHttps(data.crestUrl)}" alt="logo ${data.shortName}" onerror="this.onerror=null;this.src='images/icon/icon-m.png'"/>
+                        <img src="${GlobalFunct.imageHttpToHttps(data.crestUrl)}" alt="logo ${data.shortName}" onerror="this.onerror=null;this.src='assets/images/icon/icon-m.png'"/>
                       </div>
                       <div class="colom-header">
                         <h1 class="header center">${data.shortName}</h1>

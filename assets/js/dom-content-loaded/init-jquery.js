@@ -44,17 +44,6 @@ const InitJquery = () => {
           $('.modal#modal1').modal('open');
         });
 
-        //desktop nav active
-        $('.topnav a').on( 'click', function () {
-            $( '.topnav' ).find( 'li.active' ).removeClass( 'active' );
-            $( this ).parent( 'li' ).addClass( 'active' );
-        });
-        //mobile nav active
-        $('.sidenav a' ).on( 'click', function () {
-            $( '.sidenav' ).find( 'li.active' ).removeClass( 'active' );
-            $( this ).parent( 'li' ).addClass( 'active' );
-        });
-
     }
     //end reinit
 

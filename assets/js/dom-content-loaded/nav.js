@@ -9,7 +9,7 @@ import GlobalFunct from "../utility/global-funct.js";
   // Activate sidebar nav
   const nav = () => {
 
-    const elemNav = "js/component/nav.html";
+    const elemNav = "assets/js/component/nav.html";
     const elems = document.querySelectorAll(".sidenav");
     M.Sidenav.init(elems);
    
@@ -27,11 +27,17 @@ import GlobalFunct from "../utility/global-funct.js";
      
           // Daftarkan event listener untuk setiap tautan menu
           document.querySelectorAll(".sidenav a, .topnav a").forEach(elm => {
+            
             elm.addEventListener("click", event => {
               // Tutup sidenav
               const sidenav = document.querySelector(".sidenav");
               M.Sidenav.getInstance(sidenav).close();
-     
+
+              if (document.querySelector('.topnav a.active') !== null) {
+                document.querySelector('.topnav a.active').classList.remove('active');
+              }
+              event.target.className = "active";
+              
               // Muat konten halaman yang dipanggil
               page = event.target.getAttribute("href").substr(1);
               loadPage(page);

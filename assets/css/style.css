@@ -17,19 +17,32 @@ main {
 }
 
 nav ul a,
-nav .brand-logo,
+.brand-logo,
 .sidenav li a {
-  color: var(--primary-color);
   font-weight: bold;
+  color: #2c0231 ;
+  height:auto !important;
+}
+nav ul li :active, nav ul li .active, nav ul li a:active {
+  font-weight: bold;
+  width: fit-content;
+  height: fit-content;
+  color: #fff !important;
+  background-color: var(--primary-color);
 }
 
-nav ul li.active {
-  border-radius: 10px;
-}
-nav ul li :hover {
-  border-radius: 10px;
+nav ul li:hover, nav ul li a:hover,
+nav ul li a i:hover,nav ul li a i:active,nav ul li a i:focus,
+nav ul li:focus, nav ul li a:focus,
+nav ul li:after, nav ul li a:after,
+nav ul li.active, nav ul a:hover {
+  color: #fff !important;
+  background-color: var(--primary-color);
 }
 
+.waves-effect {
+  -webkit-tap-highlight-color: var(--primary-color);
+}
  /* label focus color */
  .input-field input[type=text]:focus + label {
   color: var(--primary-color);
@@ -38,6 +51,21 @@ nav ul li :hover {
 .input-field input[type=text]:focus {
   border-bottom: 1px solid var(--primary-color);
   box-shadow: 0 1px 0 0 var(--primary-color);
+}
+
+.tabs .tab a:hover,.tabs .tab a.active{color: var(--secondary-color)}
+.tabs .indicator{background-color:var(--secondary-color);}
+.tabs .tab a {
+  font-weight: bold;
+  color:rgba(162, 65, 182, 0.6);
+}
+
+.btn:hover,.btn-floating:after,.btn-large:after, .btn-large:hover, 
+.btn-floating:hover, .btn-large:active, .btn-large:before,
+.btn-large a:hover,.btn-large a:focus,.btn-large a:active,
+.btn-large a:after,.btn-floating:hover.btn-floating:focus,
+.btn:focus,.btn-large:focus,.btn-small:focus,.btn-floating:focus{ 
+   background-color:var(--primary-color) 
 }
 
 blockquote {
@@ -51,6 +79,9 @@ blockquote {
 
 .purple-theme, .sidenav li a i.material-icons{
   color: var(--primary-color);
+}
+.nav-selected{
+  color: #fff !important;
 }
 
 .tap-target, .btn-floating{
@@ -219,7 +250,6 @@ p {
   background-position-y:50%;
   min-height: 580px;
   line-height: 0;
-  margin-top: 10px;
   align-items: center;
   width: 98%;
   color: rgba(255,255,255,.9);
